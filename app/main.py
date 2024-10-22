@@ -10,11 +10,11 @@ def get_file_path(file_name):
     return os.path.join(os.path.dirname(__file__), file_name)
 
 def get_clean_data():
-    data = pd.read_csv('../data/data.csv')
+    data_file_path = get_file_path('../data/data.csv')
+    data = pd.read_csv(data_file_path)
     
     data = data.drop(['Unnamed: 32', 'id'], axis=1)
-     
-    data['diagnosis'] = data['diagnosis'].map({'M':1, 'B':0})
+    data['diagnosis'] = data['diagnosis'].map({'M': 1, 'B': 0})
 
     return data
 
