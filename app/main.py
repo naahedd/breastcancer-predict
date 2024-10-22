@@ -3,6 +3,11 @@ import pickle as pickle
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
+import os
+
+
+def get_file_path(file_name):
+    return os.path.join(os.path.dirname(__file__), file_name)
 
 def get_clean_data():
     data = pd.read_csv('../data/data.csv')
@@ -162,13 +167,13 @@ def add_predictions(input_data):
 
 def main():
     st.set_page_config(
-        page_title='Breast Cancer, Predictor',
+        page_title='Breast Cancer Predictor',
         page_icon=':female-doctor:',
         layout='wide',
         initial_sidebar_state='expanded'
     )
 
-    with open('../assets/style.css') as f:
+    with open(get_file_path('../assets/style.css')) as f:
         st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
 
     input_data = add_sidebar()
